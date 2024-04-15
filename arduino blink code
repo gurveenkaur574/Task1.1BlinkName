@@ -1,0 +1,187 @@
+// Define LED pin (built-in LED)
+const int ledPin = LED_BUILTIN;
+
+// Define Morse code timings (in milliseconds)
+const int dotDuration = 250;
+const int dashDuration = 3 * dotDuration;
+const int interElementPause = dotDuration;
+const int interCharacterPause = 3 * dotDuration;
+const int interWordPause = 7 * dotDuration;
+
+// Function to blink a dot
+void dot() {
+  digitalWrite(ledPin, HIGH);
+  delay(dotDuration);
+  digitalWrite(ledPin, LOW);
+  delay(interElementPause);
+}
+
+// Function to blink a dash
+void dash() {
+  digitalWrite(ledPin, HIGH);
+  delay(dashDuration);
+  digitalWrite(ledPin, LOW);
+  delay(interElementPause);
+}
+
+// Function to blink a character in Morse code
+void blinkCharacter(char c) {
+  switch (c) {
+    case 'A':
+      dot();
+      dash();
+      break;
+    case 'B':
+      dash();
+      dot();
+      dot();
+      dot();
+      break;
+    case 'C':
+      dash();
+      dot();
+      dash();
+      dot();
+      break;
+    case 'D':
+      dash();
+      dot();
+      dot();
+      break;
+    case 'E':
+      dot();
+      break;
+    case 'F':
+      dot();
+      dot();
+      dash();
+      dot();
+      break;
+    case 'G':
+      dash();
+      dash();
+      dot();
+      break;
+    case 'H':
+      dot();
+      dot();
+      dot();
+      dot();
+      break;
+    case 'I':
+      dot();
+      dot();
+      break;
+    case 'J':
+      dot();
+      dash();
+      dash();
+      dash();
+      break;
+    case 'K':
+      dash();
+      dot();
+      dash();
+      break;
+    case 'L':
+      dot();
+      dash();
+      dot();
+      dot();
+      break;
+    case 'M':
+      dash();
+      dash();
+      break;
+    case 'N':
+      dash();
+      dot();
+      break;
+    case 'O':
+      dash();
+      dash();
+      dash();
+      break;
+    case 'P':
+      dot();
+      dash();
+      dash();
+      dot();
+      break;
+    case 'Q':
+      dash();
+      dash();
+      dot();
+      dash();
+      break;
+    case 'R':
+      dot();
+      dash();
+      dot();
+      break;
+    case 'S':
+      dot();
+      dot();
+      dot();
+      break;
+    case 'T':
+      dash();
+      break;
+    case 'U':
+      dot();
+      dot();
+      dash();
+      break;
+    case 'V':
+      dot();
+      dot();
+      dot();
+      dash();
+      break;
+    case 'W':
+      dot();
+      dash();
+      dash();
+      break;
+    case 'X':
+      dash();
+      dot();
+      dot();
+      dash();
+      break;
+    case 'Y':
+      dash();
+      dot();
+      dash();
+      dash();
+      break;
+    case 'Z':
+      dash();
+      dash();
+      dot();
+      dot();
+      break;
+    default:
+      // Handle spaces or other characters
+      delay(interWordPause);
+      break;
+  }
+}
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Blink the name "GURVEEN" in Morse code
+  blinkCharacter('G');
+  blinkCharacter('U');
+  blinkCharacter('R');
+  blinkCharacter('V');
+  blinkCharacter('E');
+  blinkCharacter('E');
+  blinkCharacter('N');
+
+  // Add inter-word pause
+  delay(interWordPause);
+}
